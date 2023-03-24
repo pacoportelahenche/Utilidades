@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.net.URL;
 import java.util.Collections;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -63,9 +64,11 @@ public class Interfaz extends javax.swing.JFrame {
     }
     
     private void ponerIcono(){
-        File imagen = new File("recursos/elco.png");
-        ImageIcon icono = new ImageIcon(imagen.toString());
-        this.setIconImage(icono.getImage());
+        URL url = this.getClass().getResource("/elco.png");
+        if(url != null){
+            ImageIcon imagen = new ImageIcon(url);
+            this.setIconImage(imagen.getImage());
+        }
     }
     
     public int salir(){
