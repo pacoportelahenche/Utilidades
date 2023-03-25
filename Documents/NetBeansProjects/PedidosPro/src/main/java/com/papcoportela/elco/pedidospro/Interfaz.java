@@ -17,6 +17,8 @@ import javax.xml.bind.Unmarshaller;
 /**
  *
  * @author Paco Portela Henche
+ * @date 18 mar 2023
+ * Esta clase crea la interfaz que va a utilizar el usuario.
  */
 public class Interfaz extends javax.swing.JFrame {
     private  Pedidos pedidos;
@@ -64,7 +66,7 @@ public class Interfaz extends javax.swing.JFrame {
     }
     
     private void ponerIcono(){
-        URL url = this.getClass().getResource("/elco.png");
+        URL url = this.getClass().getResource("/recursos/elco.png");
         if(url != null){
             ImageIcon imagen = new ImageIcon(url);
             this.setIconImage(imagen.getImage());

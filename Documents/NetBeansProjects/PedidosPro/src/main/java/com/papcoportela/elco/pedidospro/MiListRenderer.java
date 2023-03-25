@@ -49,7 +49,7 @@ import javax.swing.ListCellRenderer;
             LineaPedido obj = (LineaPedido) valor;
 
             switch (obj.getEstadoPedido()) {
-                case LineaPedido.ESTADO_PENDIENTE:
+                case LineaPedido.ESTADO_PENDIENTE -> {
                     if (obj.getTipoPedido() == LineaPedido.TIPO_ALIMENTACION) {
                         setForeground(Color.ORANGE);
                         setText(obj.toString());
@@ -57,19 +57,19 @@ import javax.swing.ListCellRenderer;
                         setForeground(Color.GREEN);
                         setText(obj.toString());
                     }
-                    break;
-                case LineaPedido.ESTADO_PEDIDO:
+                }
+                case LineaPedido.ESTADO_PEDIDO -> {
                     setForeground(Color.RED);
                     setText(obj.toString());
-                    break;
-                case LineaPedido.ESTADO_SELECCIONADO:
+                }
+                case LineaPedido.ESTADO_SELECCIONADO -> {
                     setForeground(Color.CYAN);
                     setText(obj.toString());
-                    break;
-                default:
+                }
+                default -> {
                     setForeground(Color.LIGHT_GRAY);
                     setText(obj.toString());
-                    break;
+                }
             }
             return this;
         }

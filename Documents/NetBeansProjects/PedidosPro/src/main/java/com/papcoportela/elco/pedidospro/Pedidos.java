@@ -5,6 +5,9 @@ package com.papcoportela.elco.pedidospro;
  *
  * @author Paco Portela Henche
  * @date 18 mar 2023
+ * Esta clase representa la lista de pedidos que usaremos en la aplicacion.
+ * Utilizamos las anotaciones de la API JABX para poder trabajar con datos
+ * en formato XML de forma sencilla.
  */
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

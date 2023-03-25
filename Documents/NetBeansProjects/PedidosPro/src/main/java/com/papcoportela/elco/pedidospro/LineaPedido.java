@@ -12,11 +12,9 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author Paco Portela Henche
  * @date 18 mar 2023
- */
-/**
  * Esta clase encapsula el contenido y funcionamiento de una linea de un pedido.
- * @author Francisco Portela Henche (Noviembre 2011).
- *
+ * Utiliza las anotaciones de la API JABX para poder trabajar con datos
+ * en formato XML de forma sencilla.
  */
 public class LineaPedido implements Comparable{
     // variables miembro de la clase
@@ -134,8 +132,10 @@ public class LineaPedido implements Comparable{
      */
     public void cambiarEstadoPedido(){
         switch (this.getEstadoPedido()) {
-            case LineaPedido.ESTADO_PENDIENTE -> this.setEstadoPedido(LineaPedido.ESTADO_PEDIDO);
-            case LineaPedido.ESTADO_PEDIDO -> this.setEstadoPedido(LineaPedido.ESTADO_RECIBIDO);
+            case LineaPedido.ESTADO_PENDIENTE ->
+                this.setEstadoPedido(LineaPedido.ESTADO_PEDIDO);
+            case LineaPedido.ESTADO_PEDIDO -> 
+                this.setEstadoPedido(LineaPedido.ESTADO_RECIBIDO);
             default -> this.setEstadoPedido(LineaPedido.ESTADO_PENDIENTE);
         }
     }

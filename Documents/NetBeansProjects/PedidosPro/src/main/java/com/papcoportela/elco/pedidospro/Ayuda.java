@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
  *
  * @author Paco Portela Henche
  * @date 21 mar 2023
+ * Esta clase presenta una ayuda de como utilizar la aplicacion al usuario.
  */
 public class Ayuda {
     public Ayuda(){
@@ -18,11 +19,11 @@ public class Ayuda {
                 + "<font size=4><ol><li>Seleccione el tipo de pedido que "
                 + "quiere introducir (alimentacion o drogueria).</li>"
                 + "<li>Introduzca el texto en el campo de texto.</li>"
-                + "<li>Pulse <b>ENTER</b>"
+                + "<li>Pulse <b>ENTER.</b>"
                 + "</li></ol></font>"
                 + "<div align=center><h2>Visualizacion "
                 + "de pedidos por tipo</h2></div>"
-                + "<font size=4><ol><li>Seleccione el tipo en el comboBox</b>"
+                + "<font size=4><ol><li>Seleccione el tipo en el comboBox.</b>"
                 + "</li></ol></font>"
                 + "<div align=center><h2>Mecanica de trabajo</h2></div>"
                 + "<font size=4>Cuando haya introducido las lineas de pedido "
@@ -37,7 +38,16 @@ public class Ayuda {
                 + " ser <b>GRIS</b> lo que significa que ya hemos recibido la "
                 + "mercancia.<br> Cuando salgamos del "
                 + "programa las lineas en color "
-                + "<b>GRIS</b> no se grabaran.</font></body></html>";
+                + "<b>GRIS</b> no se grabaran.</font>"
+                + "<div align=center><h2>Envio por correo electronico</h2></div>"
+                + "<font size=4>Seleccione los articulos que quiera enviar por"
+                + " correo electronico pinchando primero con el boton<br>"
+                + "izquierda del raton y luego con el derecho. El articulo"
+                + " cambiara su color a azul claro.<br> Una vez que haya "
+                + "seleccionado todos los articulos, pulse en el menu "
+                + "<b>Utilidades</b> y luego en <b>Correo</b>.<br> Escriba la "
+                + "direccion a quien lo quiere enviar y pulse <b>Aceptar.</b>"
+                + "</body></html>";
         
         JOptionPane.showMessageDialog(null, textoAyuda, "AYUDA",
                 JOptionPane.INFORMATION_MESSAGE);

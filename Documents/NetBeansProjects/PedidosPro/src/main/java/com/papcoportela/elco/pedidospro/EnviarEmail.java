@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Paco Portela Henche
+ * @date 18 mar 2023
+ * Esta clase permite el envio de un correo electronico a una direccion
+ * que se haya designado. Utiliza la API Mail de Java.
  */
 public class EnviarEmail extends javax.swing.JFrame {
 
