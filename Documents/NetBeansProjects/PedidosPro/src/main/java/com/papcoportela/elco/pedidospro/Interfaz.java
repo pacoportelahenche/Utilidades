@@ -199,6 +199,10 @@ public class Interfaz extends javax.swing.JFrame {
         setTitle("PEDIDOS");
         setAlwaysOnTop(true);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado de pedidos"));
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setViewportView(listadoPedidos);
+
         listadoPedidos.setBackground(new java.awt.Color(0, 0, 0));
         listadoPedidos.setForeground(new java.awt.Color(0, 0, 0));
         listadoPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -218,6 +222,11 @@ public class Interfaz extends javax.swing.JFrame {
 
         textIntroducirPedido.setText("Escribir aquí el artículo a pedir");
         textIntroducirPedido.setToolTipText("");
+        textIntroducirPedido.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textIntroducirPedidoCaretUpdate(evt);
+            }
+        });
         textIntroducirPedido.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textIntroducirPedidoFocusGained(evt);
@@ -348,6 +357,33 @@ public class Interfaz extends javax.swing.JFrame {
         }
         enviarCorreo();
     }//GEN-LAST:event_menuItemCorreoActionPerformed
+
+    private void textIntroducirPedidoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textIntroducirPedidoCaretUpdate
+        this.seleccionarLineaListaPedidos();
+    }//GEN-LAST:event_textIntroducirPedidoCaretUpdate
+
+    
+
+    /**
+     * Este metodo selecciona una linea en la lista de pedidos dependiendo del
+     * texto que estemos escribiendo en el campo jtfTextoPedido.
+     */
+    private void seleccionarLineaListaPedidos() {
+        if (this.pedidos.getPedidos() == null || 
+                this.pedidos.getPedidos().isEmpty()) {
+            return;
+        }
+        String textoPedido = this.textIntroducirPedido.getText();
+        for (int i = 0; i < this.pedidos.getPedidos().size(); i++) {
+            String textoLinea
+                    = this.pedidos.getPedidos().get(i).getTextoPedido();
+            String[] textoSinNumero = textoLinea.split("-");
+            if (textoPedido.compareToIgnoreCase(textoSinNumero[1]) < 0) {
+                this.listadoPedidos.ensureIndexIsVisible(i);
+                break;
+            }
+        }
+    }
 
     private void enviarCorreo(){
         new EnviarEmail(this.pedidos.getPedidos()).setVisible(true);
