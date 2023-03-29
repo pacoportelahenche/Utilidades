@@ -24,7 +24,7 @@ public class Interfaz extends javax.swing.JFrame {
     private  Pedidos pedidos;
 
     /**
-     * Creates new form Interfaz
+     * Constructor de la clase.
      */
     public Interfaz() {
         initComponents();
@@ -36,6 +36,10 @@ public class Interfaz extends javax.swing.JFrame {
         this.cargarDatos();
     }
     
+    /**
+     * Inicializamos algunas propiedades de la ventana y de la lista de
+     * pedidos.
+     */
     private void initOtros(){
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -52,6 +56,9 @@ public class Interfaz extends javax.swing.JFrame {
         this.listadoPedidos.setCellRenderer(new MiListRenderer());
     }
     
+    /**
+     * Situamos la ventana en la parte inferior derecha de la pantalla.
+     */
     private void situarVentana(){
         // coloco la ventana en la parte inferior derecha de la pantalla.
         int altoPantalla = 
@@ -65,6 +72,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     }
     
+    /**
+     * Cambiamos el icono de la ventana.
+     */
     private void ponerIcono(){
         URL url = this.getClass().getResource("/recursos/elco.png");
         if(url != null){
@@ -73,12 +83,20 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Guardamos los datos y salimos del programa.
+     * @return un cero que es el codigo de todo correcto.
+     */
     public int salir(){
         this.guardarDatos();
         System.exit(0);
         return 0;
     }
     
+    /**
+     * Comprobamos que exista el fichero que contiene los datos y si no existe
+     * lo creamos junto con todas las carpetas necesarias.
+     */
     private void comprobarArchivoDatos(){
         File fichero = new File("datos/pedidos.xml");
         if (!fichero.exists()) {
@@ -93,6 +111,9 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Cargamos los datos que estan en formato XML utilizando la API de JAXB.
+     */
     private void cargarDatos(){
         try
         {
@@ -113,6 +134,9 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Guardamos los datos en formato XML utilizando la API JAXB.
+     */
     private void guardarDatos(){
         if(this.pedidos.getPedidos() == null) return;
         try
@@ -136,6 +160,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     }
     
+    /**
+     * Eliminamos los pedidos que ya han sido recibidos.
+     */
     private void eliminarPedidosRecibidos(){
         for(int i = 0; i < this.pedidos.getPedidos().size(); i++){
             LineaPedido linea = this.pedidos.getPedidos().get(i);
@@ -146,6 +173,10 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Visualizamos en la JList los pedidos de tipo que pasamos como argumento.
+     * @param tipo el tipo de pedido que queremos ver.
+     */
     private void verPedidosDeTipo(int tipo) {
         LineaPedido linea;
         //si queremos ver todos los pedidos pasamos un argumento -1.
@@ -221,7 +252,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         textIntroducirPedido.setText("Escribir aquí el artículo a pedir");
-        textIntroducirPedido.setToolTipText("");
+        textIntroducirPedido.setToolTipText("Escriba aqui el articulo que quiere pedir");
         textIntroducirPedido.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 textIntroducirPedidoCaretUpdate(evt);
@@ -242,6 +273,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         menuItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItemSalir.setText("Salir");
+        menuItemSalir.setToolTipText("Sale del programa y graba los pedidos");
         menuItemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemSalirActionPerformed(evt);
@@ -253,7 +285,9 @@ public class Interfaz extends javax.swing.JFrame {
 
         menuUtilidades.setText("Utilidades");
 
+        menuItemCorreo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItemCorreo.setText("Correo");
+        menuItemCorreo.setToolTipText("Envia los articulos seleccionados por correo electronico");
         menuItemCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemCorreoActionPerformed(evt);
@@ -265,7 +299,9 @@ public class Interfaz extends javax.swing.JFrame {
 
         menuAyuda.setText("Ayuda");
 
+        menuItemAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItemAyuda.setText("Ayuda");
+        menuItemAyuda.setToolTipText("Muestra un texto de ayuda");
         menuItemAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemAyudaActionPerformed(evt);
@@ -306,10 +342,18 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Cuando pulsamos el menuItem Salir.
+     * @param evt el objeto que contiene los datos del evento generado.
+     */
     private void menuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSalirActionPerformed
         this.salir();
     }//GEN-LAST:event_menuItemSalirActionPerformed
 
+    /**
+     * Cuando pulsamos en el comboBox del tipo de pedido.
+     * @param evt el objeto que contiene los datos del evento generado.
+     */
     private void comboTipoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoPedidoActionPerformed
         int indice = this.comboTipoPedido.getSelectedIndex();
         switch (indice) {
@@ -317,18 +361,31 @@ public class Interfaz extends javax.swing.JFrame {
             case 1 -> this.verPedidosDeTipo(LineaPedido.TIPO_DROGUERIA);
             default -> this.verPedidosDeTipo(-1);
         }
+        this.textIntroducirPedido.requestFocusInWindow();
     }//GEN-LAST:event_comboTipoPedidoActionPerformed
 
+    /**
+     * Cuando el textField de introducir los pedidos gana el foco.
+     * @param evt el objeto que contiene los datos del evento generado.
+     */
     private void textIntroducirPedidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textIntroducirPedidoFocusGained
         this.textIntroducirPedido.selectAll();
     }//GEN-LAST:event_textIntroducirPedidoFocusGained
 
+    /**
+     * Cuando pulsamos ENTER en el textField de introducir los pedidos.
+     * @param evt el objeto que contiene los datos del evento generado.
+     */
     private void textIntroducirPedidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textIntroducirPedidoKeyPressed
         if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.addArticulo();
         }
     }//GEN-LAST:event_textIntroducirPedidoKeyPressed
 
+    /**
+     * Cuando pulsamos con el mouse sobre la JList que contiene los pedidos.
+     * @param evt el objeto que contiene los datos del evento generado.
+     */
     private void listadoPedidosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoPedidosMousePressed
         int ind = this.listadoPedidos.getSelectedIndex();
         if (ind != -1) {
@@ -345,10 +402,18 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listadoPedidosMousePressed
 
+    /**
+     * Cuando pulsamos el menuItem Ayuda.
+     * @param evt el objeto que contiene los datos del evento generado.
+     */
     private void menuItemAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAyudaActionPerformed
         new Ayuda();
     }//GEN-LAST:event_menuItemAyudaActionPerformed
 
+    /**
+     * Cuando pulsamos en el menuItem Correo.
+     * @param evt el objeto que contiene los datos del evento generado.
+     */
     private void menuItemCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCorreoActionPerformed
         if(this.pedidos.getPedidos() == null){
             JOptionPane.showMessageDialog(this, "No hay articulos para pedir",
@@ -358,11 +423,13 @@ public class Interfaz extends javax.swing.JFrame {
         enviarCorreo();
     }//GEN-LAST:event_menuItemCorreoActionPerformed
 
+    /**
+     * Cuando cambia la posicion del cursor en el textField de los pedidos.
+     * @param evt 
+     */
     private void textIntroducirPedidoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textIntroducirPedidoCaretUpdate
         this.seleccionarLineaListaPedidos();
     }//GEN-LAST:event_textIntroducirPedidoCaretUpdate
-
-    
 
     /**
      * Este metodo selecciona una linea en la lista de pedidos dependiendo del
@@ -384,22 +451,33 @@ public class Interfaz extends javax.swing.JFrame {
             }
         }
     }
-
+    
+    /**
+     * Creamos un nuevo objeto EnviarEMail (un JFrame) y lo hacemos visible.
+     */
     private void enviarCorreo(){
         new EnviarEmail(this.pedidos.getPedidos()).setVisible(true);
     }
     
+    /**
+     * Añadimos un articulo a la lista de pedidos.
+     */
     private void addArticulo() {
         String texto = this.textIntroducirPedido.getText();
         LineaPedido nuevaLinea = new LineaPedido();
+        // Comprobamos que contenga texto.
         if(texto.length() > 0){
             texto = comprobarCantidad(texto);
             nuevaLinea.setTextoPedido(texto.toUpperCase());
+            /* Dependiendo de la seleccion del comboBox creamos un articulo de
+            alimentacion o de drogueria. En caso de que ninguno este
+            seleccionado sacamos un aviso al usuario.
+            */
             int indiceCombo = this.comboTipoPedido.getSelectedIndex();
             switch (indiceCombo) {
                 case 0 -> {
                     nuevaLinea.setTipoPedido(LineaPedido.TIPO_ALIMENTACION);
-                    this.pedidos.add(nuevaLinea);
+                    this.pedidos.add(nuevaLinea);  
                 }
                 case 1 -> {
                     nuevaLinea.setTipoPedido(LineaPedido.TIPO_DROGUERIA);
@@ -410,10 +488,16 @@ public class Interfaz extends javax.swing.JFrame {
                              "Seleccione el tipo de pedido en el combo box",
                              "AVISO", JOptionPane.INFORMATION_MESSAGE);
             }
+            // Ordenamos la lista por orden alfabetico.
+            Collections.sort(this.pedidos.getPedidos());
+            // Actualizamos la lista.
+            actualizarDatos();
         }
-        actualizarDatos();
     }
     
+    /**
+     * Actualiza la lista de datos de la JList de los pedidos.
+     */
     private void actualizarDatos(){
         Collections.sort(this.pedidos.getPedidos());
         this.listadoPedidos.
@@ -423,6 +507,12 @@ public class Interfaz extends javax.swing.JFrame {
         this.textIntroducirPedido.selectAll();
     }
     
+    /**
+     * Comprobamos que el usuario haya añadido una cantidad a pedir a la linea
+     * del pedido. Si no lo ha hecho se añade 1 por defecto.
+     * @param texto el pedido que vamos a comprobar.
+     * @return el pedido con la cantidad.
+     */
     private String comprobarCantidad(String texto){
         if(texto.charAt(0) < '1' || texto.charAt(0) > '9'){
             texto = "1-" + texto;

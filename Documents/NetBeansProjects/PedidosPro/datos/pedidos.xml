@@ -1,112 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Pedidos>
     <Linea>
-        <Texto>1-CUARTO</Texto>
+        <Texto>10-ATUN</Texto>
+        <Estado>1</Estado>
+        <Tipo>0</Tipo>
+    </Linea>
+    <Linea>
+        <Texto>6-CHOCOLATE</Texto>
+        <Estado>1</Estado>
+        <Tipo>0</Tipo>
+    </Linea>
+    <Linea>
+        <Texto>1-COMIDA</Texto>
         <Estado>0</Estado>
         <Tipo>0</Tipo>
     </Linea>
     <Linea>
-        <Texto>1-CUATRIGESIMO</Texto>
+        <Texto>5-COSAS</Texto>
+        <Estado>1</Estado>
+        <Tipo>0</Tipo>
+    </Linea>
+    <Linea>
+        <Texto>1-DETERGENTE</Texto>
+        <Estado>0</Estado>
+        <Tipo>1</Tipo>
+    </Linea>
+    <Linea>
+        <Texto>15-GALLETAS</Texto>
+        <Estado>1</Estado>
+        <Tipo>0</Tipo>
+    </Linea>
+    <Linea>
+        <Texto>5-MERMELADA</Texto>
+        <Estado>1</Estado>
+        <Tipo>0</Tipo>
+    </Linea>
+    <Linea>
+        <Texto>1-NUEVO PEDIDO</Texto>
         <Estado>0</Estado>
         <Tipo>0</Tipo>
     </Linea>
     <Linea>
-        <Texto>1-DECIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-DUODECIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-NONAGESIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-NOVENO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-OCTAVO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-OCTUAGESIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-PRIMERO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-QUICUAGESIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-QUINTO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-SEGUNDO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-SEPTIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-SEPTUAGESIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-SEXAGESIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-SEXTO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-TERCERO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-TRIGESIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-UNDECIMO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-VEINTE VEINTE VEINTE VEINTE VEINTE VEINTE VEINTE VEINTE</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-VEINTIUNO</Texto>
-        <Estado>0</Estado>
-        <Tipo>0</Tipo>
-    </Linea>
-    <Linea>
-        <Texto>1-VIGESIMO</Texto>
+        <Texto>1-PIENSO</Texto>
         <Estado>0</Estado>
         <Tipo>0</Tipo>
     </Linea>

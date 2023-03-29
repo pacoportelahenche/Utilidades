@@ -196,15 +196,18 @@ public class LineaPedido implements Comparable{
      * 'java.util.Collections'
      * @param obj el objeto a comparar
      * @return un entero. Si es negativo el objeto es menor al objeto que se
-     * pasa como argumento al mÃ©todo. Si es cero los objetos son iguales. Si es
+     * pasa como argumento al metodo. Si es cero los objetos son iguales. Si es
      * positivo el objeto es mayor al objeto pasado como argumento.
-     * En este caso los objetos se comparan alfabÃ©ticamente por su texto.
+     * En este caso los objetos se comparan alfabeticamente por su texto.
      */
     @Override
     public int compareTo(Object obj){
         LineaPedido otraLinea = (LineaPedido)obj;
-        return this.getTextoPedido()
-                .compareToIgnoreCase(otraLinea.getTextoPedido());
+        String textoOtra = otraLinea.getTextoPedido();
+        String[] datosOtra = textoOtra.split("-");
+        String textoEsta = this.getTextoPedido();
+        String[] datosEsta = textoEsta.split("-");
+        return datosEsta[1].compareToIgnoreCase(datosOtra[1]);
     }
 }
 

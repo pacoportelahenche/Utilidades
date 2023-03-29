@@ -21,8 +21,8 @@ import javax.swing.JOptionPane;
 public class EnviarEmail extends javax.swing.JFrame {
 
     /**
-     * Creates new form EnviarEmail
-     * @param pedidos
+     * Constructor.
+     * @param pedidos el listado de pedidos.
      */
     public EnviarEmail(List pedidos) {
         initComponents();
@@ -98,22 +98,31 @@ public class EnviarEmail extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Método que se ejecuta al pulsa el boton <code>Aceptar<code>
+ * @param evt el objeto que contiene los datos del evento generado.
+ */
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         StringBuilder sb = new StringBuilder();
+        // obtenemos la direccion para enviar.
         String direccion = this.textEnviarA.getText();
+        // si la direccion esta vacia salimos del metodo.
         if(direccion.isEmpty()){
             JOptionPane.showMessageDialog(this,
                     "Escriba un direccion de correo", "AVISO",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
+        // si la direccion no contiene la arroba salimos del metodo.
         if(!direccion.contains("@")){
             JOptionPane.showMessageDialog(this,
                     "Introduzca una direccion de correo valida",
                     "AVISO", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        /* comprobamos en la lista de pedidos los que han sido seleccionados
+        para enviar y los vamos añadiendo a un StringBuilder.
+        */
         for(int i = 0; i < this.pedidos.size(); i++){
             LineaPedido lineaActual = (LineaPedido)this.pedidos.get(i);
             if(lineaActual.getEstadoPedido() == LineaPedido.ESTADO_SELECCIONADO){
@@ -122,6 +131,7 @@ public class EnviarEmail extends javax.swing.JFrame {
             }
         }
         String datos = sb.toString();
+        // comprobamos que haya algun pedido que enviar.
         if(datos.isEmpty()){
             JOptionPane.showMessageDialog(this,
                 "No hay ningun articulo seleccionado para enviar",
@@ -129,10 +139,19 @@ public class EnviarEmail extends javax.swing.JFrame {
             this.setVisible(false);
             return;
         }
+        // convertimos el texto a HTML.
         String datosPedidoHtml = convertirTextoHTML(sb.toString());
+        // enviamos el correo a la direccion indicada.
         enviarCorreo(datosPedidoHtml, direccion);
+        // cerramos la ventana y devolvemos los recursos al sistema.
+        this.dispose();
     }//GEN-LAST:event_botonAceptarActionPerformed
 
+    /**
+     * 
+     * @param datos los pedidos que vamos a convertir a HTML.
+     * @return un <code>String</code> con los datos en formato HTML.
+     */
     private String convertirTextoHTML(String datos){
         String[] arrayDatos = datos.split("\n");
         StringBuilder sb = new StringBuilder();
@@ -140,17 +159,29 @@ public class EnviarEmail extends javax.swing.JFrame {
                 + "<th>ARTICULO</th>");
         for (String arrayDato : arrayDatos) {
             String[] d = arrayDato.split("-");
-            sb.append("<tr><td>").append(d[0]).append("</td>").append("<td>")
+            if(d.length == 2){
+                sb.append("<tr><td>").append(d[0]).append("</td>").append("<td>")
                     .append(d[1]).append("</td></tr>");
+            }
         }
         sb.append("</table></body></html>").append("<p>Muchas gracias.</p>");
         return sb.toString();
     }
     
+    /**
+     * Metodo que se ejecuta cuando pulsamos el boton <code>Cancelar</code>.
+     * @param evt el objeto que contiene los datos del evento generado.
+     */
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
+    /**
+     * Metodo que envia el correo electronico.
+     * @param datos los datos de los pedidos a enviar.
+     * @param direccion la direccion a la que se envian los datos.
+     */
     private void enviarCorreo(String datos, String direccion){
         try{
             Properties props = new Properties();
@@ -186,6 +217,7 @@ public class EnviarEmail extends javax.swing.JFrame {
             // Cerramos el transporte
             t.close();
             JOptionPane.showMessageDialog(null, "Correo enviado");
+            // Cerramos la ventana y devolvemos sus recursos al sistema.
             this.setVisible(false);
             this.dispose();
         }
@@ -194,7 +226,7 @@ public class EnviarEmail extends javax.swing.JFrame {
         }
     }
     
-    private List pedidos;
+    private final List pedidos; // la lista que contendra los pedidos.
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;

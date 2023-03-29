@@ -10,6 +10,11 @@ package com.papcoportela.elco.pedidospro;
  */
 public class PedidosPro {
 
+    /**
+     * Metodo de entrada a la aplicacion.
+     * @param args los parametros pasados cuando arrancamos el programa desde
+     * la consola.
+     */
     public static void main(String[] args) {
         Interfaz interfaz = new Interfaz();
         interfaz.setVisible(true);

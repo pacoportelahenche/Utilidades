@@ -18,15 +18,27 @@ import java.util.List;
 public class Pedidos {
     private List<LineaPedido> listaPedidos;
     
+    /**
+     * Obtenemos la lista de pedidos.
+     * @return la List que contiene los pedidos.
+     */
     public List<LineaPedido> getPedidos(){
         return this.listaPedidos;
     }
     
+    /**
+     * Ponemos la lista de pedidos.
+     * @param lista la List que contiene los pedidos.
+     */
     @XmlElement(name = "Linea")
     public void setPedidos(List<LineaPedido> lista){
         this.listaPedidos = lista;
     }
     
+    /**
+     * Añadimos un linea de pedido a la lista.
+     * @param linea el objeto LineaPedido a añadir.
+     */
     public void add(LineaPedido linea){
         if(this.listaPedidos == null){
             this.listaPedidos = new ArrayList<>();
@@ -34,6 +46,10 @@ public class Pedidos {
         this.listaPedidos.add(linea);
     }
     
+    /**
+     * Imprime toda la lista de pedidos.
+     * @return un <code>String</code> que contiene la lista de pedidos.
+     */
     @Override
     public String toString()
     {

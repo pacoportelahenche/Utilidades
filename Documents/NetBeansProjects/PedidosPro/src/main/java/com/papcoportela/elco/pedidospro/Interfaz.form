@@ -15,6 +15,7 @@
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Sale del programa y graba los pedidos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSalirActionPerformed"/>
@@ -29,7 +30,11 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemCorreo">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+C"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Correo"/>
+                <Property name="toolTipText" type="java.lang.String" value="Envia los articulos seleccionados por correo electronico"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCorreoActionPerformed"/>
@@ -44,7 +49,11 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemAyuda">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+A"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ayuda"/>
+                <Property name="toolTipText" type="java.lang.String" value="Muestra un texto de ayuda"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemAyudaActionPerformed"/>
@@ -170,7 +179,7 @@
     <Component class="javax.swing.JTextField" name="textIntroducirPedido">
       <Properties>
         <Property name="text" type="java.lang.String" value="Escribir aqu&#xed; el art&#xed;culo a pedir"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="Escriba aqui el articulo que quiere pedir"/>
       </Properties>
       <Events>
         <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="textIntroducirPedidoCaretUpdate"/>

@@ -14,10 +14,10 @@ import javax.swing.ListCellRenderer;
  */
 /**
      * Esta clase nos permite manejar a nuestro antojo la forma en como se
-     * visualizan los datos en la JList 'jlListaPedidos'. Una instancia de esta
-     * clase le serÃ¡ pasada a la JList a travÃ©s del mÃ©todo 'setCellRenderer(new
-     * miListRenderer())'. Lo que hacemos es reescribir el mÃ©todo
-     * 'getListCellRendererComponent' para adaptarlo a nuestras necesidades.
+     * visualizan los datos en la JList listadoPedidos. Una instancia de esta
+     * clase le sera pasada a la JList a traves del metodo setCellRenderer(new
+     * miListRenderer()). Lo que hacemos es reescribir el metodo
+     * getListCellRendererComponent para adaptarlo a nuestras necesidades.
      */
     class MiListRenderer extends JLabel implements ListCellRenderer {
 
@@ -48,7 +48,14 @@ import javax.swing.ListCellRenderer;
             }
             LineaPedido obj = (LineaPedido) valor;
 
+            /* Dependiendo del estado y del tipo del pedido visualizamos los
+            datos de un color u otro.
+            */
             switch (obj.getEstadoPedido()) {
+                /* Si el pedido esta pendiente de pedir visualizamos los 
+                de alimentacion de color naranja y los de drogueria de color
+                verde.
+                */
                 case LineaPedido.ESTADO_PENDIENTE -> {
                     if (obj.getTipoPedido() == LineaPedido.TIPO_ALIMENTACION) {
                         setForeground(Color.ORANGE);
@@ -58,14 +65,23 @@ import javax.swing.ListCellRenderer;
                         setText(obj.toString());
                     }
                 }
+                /* Si el pedido esta ya pedido visualizamos de color rojo
+                tanto si es de alimentacion como de drogueria.
+                */
                 case LineaPedido.ESTADO_PEDIDO -> {
                     setForeground(Color.RED);
                     setText(obj.toString());
                 }
+                /* Si el pedido esta seleccionado para enviar por correo
+                electronico lo visualizamos de color azul claro.
+                */
                 case LineaPedido.ESTADO_SELECCIONADO -> {
                     setForeground(Color.CYAN);
                     setText(obj.toString());
                 }
+                /* Por ultimo si el pedido a sido recibido lo visualizamos de
+                color gris claro.
+                */
                 default -> {
                     setForeground(Color.LIGHT_GRAY);
                     setText(obj.toString());
