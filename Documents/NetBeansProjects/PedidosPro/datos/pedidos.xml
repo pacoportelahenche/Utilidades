@@ -12,7 +12,7 @@
     </Linea>
     <Linea>
         <Texto>1-COMIDA</Texto>
-        <Estado>0</Estado>
+        <Estado>1</Estado>
         <Tipo>0</Tipo>
     </Linea>
     <Linea>
@@ -22,7 +22,7 @@
     </Linea>
     <Linea>
         <Texto>1-DETERGENTE</Texto>
-        <Estado>0</Estado>
+        <Estado>1</Estado>
         <Tipo>1</Tipo>
     </Linea>
     <Linea>
@@ -37,12 +37,12 @@
     </Linea>
     <Linea>
         <Texto>1-NUEVO PEDIDO</Texto>
-        <Estado>0</Estado>
+        <Estado>1</Estado>
         <Tipo>0</Tipo>
     </Linea>
     <Linea>
         <Texto>1-PIENSO</Texto>
-        <Estado>0</Estado>
+        <Estado>1</Estado>
         <Tipo>0</Tipo>
     </Linea>
 </Pedidos>

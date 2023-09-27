@@ -44,6 +44,8 @@ public class EnviarEmail extends javax.swing.JFrame {
         textEnviarA = new javax.swing.JTextField();
         botonAceptar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textAreaComentarios = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Enviar Correo");
@@ -64,6 +66,13 @@ public class EnviarEmail extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comentarios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        textAreaComentarios.setColumns(20);
+        textAreaComentarios.setRows(5);
+        textAreaComentarios.setToolTipText("Escribir aquí el mensaje a enviar con el pedido.");
+        jScrollPane1.setViewportView(textAreaComentarios);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,16 +80,20 @@ public class EnviarEmail extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textEnviarA, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(botonAceptar)
-                        .addGap(51, 51, 51)
-                        .addComponent(botonCancelar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textEnviarA, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(botonAceptar)
+                                .addGap(51, 51, 51)
+                                .addComponent(botonCancelar)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +106,9 @@ public class EnviarEmail extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonAceptar)
                     .addComponent(botonCancelar))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -106,6 +121,7 @@ public class EnviarEmail extends javax.swing.JFrame {
         StringBuilder sb = new StringBuilder();
         // obtenemos la direccion para enviar.
         String direccion = this.textEnviarA.getText();
+        String mensaje = this.textAreaComentarios.getText();
         // si la direccion esta vacia salimos del metodo.
         if(direccion.isEmpty()){
             JOptionPane.showMessageDialog(this,
@@ -139,10 +155,13 @@ public class EnviarEmail extends javax.swing.JFrame {
             this.setVisible(false);
             return;
         }
+       
         // convertimos el texto a HTML.
         String datosPedidoHtml = convertirTextoHTML(sb.toString());
+        String mensajeYPedido = mensaje + datosPedidoHtml;
         // enviamos el correo a la direccion indicada.
-        enviarCorreo(datosPedidoHtml, direccion);
+        //enviarCorreo(datosPedidoHtml, direccion);
+        enviarCorreo(mensajeYPedido, direccion);
         // cerramos la ventana y devolvemos los recursos al sistema.
         this.dispose();
     }//GEN-LAST:event_botonAceptarActionPerformed
@@ -155,7 +174,7 @@ public class EnviarEmail extends javax.swing.JFrame {
     private String convertirTextoHTML(String datos){
         String[] arrayDatos = datos.split("\n");
         StringBuilder sb = new StringBuilder();
-        sb.append("<html><body><table border=1><tr><th>CTD.</th>"
+        sb.append("<html><body><p></p><table border=1><tr><th>CTD.</th>"
                 + "<th>ARTICULO</th>");
         for (String arrayDato : arrayDatos) {
             String[] d = arrayDato.split("-");
@@ -231,6 +250,8 @@ public class EnviarEmail extends javax.swing.JFrame {
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea textAreaComentarios;
     private javax.swing.JTextField textEnviarA;
     // End of variables declaration//GEN-END:variables
 }
