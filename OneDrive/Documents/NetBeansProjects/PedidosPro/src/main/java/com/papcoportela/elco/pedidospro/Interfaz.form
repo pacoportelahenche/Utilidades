@@ -89,9 +89,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="textInformacion" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="comboTipoPedido" min="-2" max="-2" attributes="0"/>
@@ -113,7 +114,9 @@
                   <Component id="comboTipoPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textIntroducirPedido" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="textInformacion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -179,13 +182,21 @@
     </Component>
     <Component class="javax.swing.JTextField" name="textIntroducirPedido">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Escriba aqui el articulo que quiere pedir"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
         <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="textIntroducirPedidoCaretUpdate"/>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textIntroducirPedidoFocusGained"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textIntroducirPedidoKeyPressed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="textInformacion">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Alimentaci&#xf3;n:     || Droguer&#xed;a:     || Total: "/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

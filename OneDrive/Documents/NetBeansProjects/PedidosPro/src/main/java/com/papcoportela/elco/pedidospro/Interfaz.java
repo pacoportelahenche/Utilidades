@@ -137,6 +137,35 @@ public class Interfaz extends javax.swing.JFrame {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+        actualizarTextoTotales(comprobarCantidadArticulos());
+        
+    }
+    
+    private String[] comprobarCantidadArticulos(){
+        String[] cantidadPorTipo = new String[2];
+        int alimentacion = 0;
+        int drogueria = 0;
+        for(int i = 0; i < this.listadoPedidos.getModel().getSize(); i++){
+            LineaPedido lineaActual =
+                    this.listadoPedidos.getModel().getElementAt(i);
+            if(lineaActual.getTipoPedido() == LineaPedido.TIPO_ALIMENTACION){
+                alimentacion++;
+            }
+            else{
+                drogueria++;
+            }
+            cantidadPorTipo[0] = String.valueOf(alimentacion);
+            cantidadPorTipo[1] = String.valueOf(drogueria);
+        }
+        return cantidadPorTipo;
+    }
+    
+    private void actualizarTextoTotales(String[] cantidades){
+        String texto = "Total lineas: " + 
+                this.listadoPedidos.getModel().getSize() + "; Alimentación: "
+                + cantidades[0] + "; Droguería: " + cantidades[1];
+        this.textInformacion.setText(texto);
+        
     }
 
     /**
@@ -222,6 +251,7 @@ public class Interfaz extends javax.swing.JFrame {
         listadoPedidos = new javax.swing.JList<>();
         comboTipoPedido = new javax.swing.JComboBox<>();
         textIntroducirPedido = new javax.swing.JTextField();
+        textInformacion = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFichero = new javax.swing.JMenu();
         menuItemSalir = new javax.swing.JMenuItem();
@@ -256,7 +286,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        textIntroducirPedido.setToolTipText("Escriba aqui el articulo que quiere pedir");
+        textIntroducirPedido.setToolTipText("");
         textIntroducirPedido.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 textIntroducirPedidoCaretUpdate(evt);
@@ -272,6 +302,9 @@ public class Interfaz extends javax.swing.JFrame {
                 textIntroducirPedidoKeyPressed(evt);
             }
         });
+
+        textInformacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        textInformacion.setText("Alimentación:     || Droguería:     || Total: ");
 
         menuFichero.setText("Fichero");
 
@@ -324,6 +357,7 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textInformacion)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(comboTipoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,7 +374,9 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboTipoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textIntroducirPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -524,6 +560,7 @@ public class Interfaz extends javax.swing.JFrame {
             Collections.sort(this.pedidos.getPedidos());
             // Actualizamos la lista.
             actualizarDatos();
+            actualizarTextoTotales(comprobarCantidadArticulos());
         }
     }
 
@@ -587,6 +624,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemCorreo;
     private javax.swing.JMenuItem menuItemSalir;
     private javax.swing.JMenu menuUtilidades;
+    private javax.swing.JTextField textInformacion;
     private javax.swing.JTextField textIntroducirPedido;
     // End of variables declaration//GEN-END:variables
 
